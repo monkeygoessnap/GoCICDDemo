@@ -48,5 +48,7 @@ jobs: # Job to execute on event
         go mod init GoCICDDemo
         go install github.com/franela/goblin@latest # Adds package for Goblin testing
         go install github.com/tebeka/go2xunit@latest # Adds package for conversion
-        go mod tidy
         go test -v # Command to run go test
+        go test -v | go2xunit > report.xml # run test again and output as report.xml
+        ls # verify that the report is indeed created
+        cat report.xml
