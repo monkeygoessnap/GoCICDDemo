@@ -48,5 +48,4 @@ jobs: # Job to execute on event
         go install github.com/franela/goblin@latest # Adds package for Goblin testing
         go install github.com/tebeka/go2xunit@latest # Adds package for conversion
         go mod init
-        go mod tidy
         go test -v # Command to run go test
