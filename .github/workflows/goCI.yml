@@ -6,7 +6,7 @@ on: #on event keyword
 jobs: # Job to execute on event
   my-job: # identifier for the job, just a name
     name: My Job
-    runs-on: ubuntu-16.04 # specify OS in virtual machine
+    runs-on: ubuntu-18.04 # specify OS in virtual machine
     steps:
     - name: Print a greeting
       run: |
@@ -20,3 +20,11 @@ jobs: # Job to execute on event
         go-version: 1.16.5 # optional
     - name: show Go version # verify that go is installed
       run: go version # show go version
+
+    - name: Checkout our codes #bring repo code to virtual environment
+      uses: actions/checkout@v2
+      
+    - name: Check file system #check virtual environment has my files
+      run: |
+        ls
+        cat calc.go # prints the contents of calc.go
