@@ -2,6 +2,10 @@ package calc
 
 import "fmt"
 
+func main() {
+	fmt.Println("Test Tagging")
+}
+
 // Add two numbers and return the result.
 func Add(val1, val2 int) int {
 	return val1 + val2
@@ -25,8 +29,4 @@ func Divide(val1, val2 int) float64 {
 		}
 	}()
 	return float64(val1) / float64(val2)
-}
-
-func main() {
-	fmt.Println("Test")
 }
