@@ -45,11 +45,16 @@ jobs: # Job to execute on event
         
     - name: Install dependencies for GO
       run: |
-        go mod init GoCICDDemo
+        go mod init
         go get github.com/franela/goblin # Adds package for Goblin testing
         go get github.com/tebeka/go2xunit # Adds package for conversion
         go mod tidy
         go test -v # Command to run go test
         go test -v | go2xunit > report.xml # run test again and output as report.xml
         ls # verify that the report is indeed created
-        cat report.xml
+    
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1 # Checkout Unit Test Reporting action
+      if: always() # always do it
+      with:
+        files: report.xml #make use of a file we created
