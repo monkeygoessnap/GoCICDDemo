@@ -45,8 +45,8 @@ jobs: # Job to execute on event
         
     - name: Install dependencies for GO
       run: |
-        go get github.com/franela/goblin # Adds package for Goblin testing
-        go get github.com/tebeka/go2xunit # Adds package for conversion
+        go install github.com/franela/goblin # Adds package for Goblin testing
+        go install github.com/tebeka/go2xunit # Adds package for conversion
         go mod init
         go mod tidy
         go test -v # Command to run go test
