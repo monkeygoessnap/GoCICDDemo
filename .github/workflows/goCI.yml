@@ -75,6 +75,12 @@ jobs: # Job to execute on event
       uses: actions/download-artifact@v2
       with:
         name: assetDocuments
+    
+    - name: Discord Notifier
+      uses: fateyan/action-discord-notifier@v1.2.0
+      with:
+        webhook: https://discord.com/api/webhooks/853518392798347264/LBg3xSNhVYRPow2uEjYK3mmuOy7ZBgnanZB_9OM3yXKRzTiUhUWDLMN9ynFsqtuhifW1
+        message-title: Discord Auto Notifier Success
        
     - if: ${{ failure() }}
       name: Create Issues Notifications
@@ -85,3 +91,9 @@ jobs: # Job to execute on event
         assignees: ${{github.actor}} # person who did the checking in
         labels: workflow-failed # label
         body: Workflow failed for commit ${{github.sha}} # body or content, github.sha is just a hash number
+        
+    - name: Discord Notifier
+      uses: fateyan/action-discord-notifier@v1.2.0
+      with:
+        webhook: https://discord.com/api/webhooks/853518392798347264/LBg3xSNhVYRPow2uEjYK3mmuOy7ZBgnanZB_9OM3yXKRzTiUhUWDLMN9ynFsqtuhifW1
+        message-title: Discord Auto Notifier Failed
