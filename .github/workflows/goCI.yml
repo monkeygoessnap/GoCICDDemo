@@ -58,6 +58,7 @@ jobs: # Job to execute on event
       if: always() # always do it
       with:
         files: report.xml #make use of a file we created
+        
     - if: ${{ success() }}
       name: Create Upload Directory
       run: mkdir upload
@@ -75,6 +76,7 @@ jobs: # Job to execute on event
       uses: actions/download-artifact@v2
       with:
         name: assetDocuments
+        
     - if: ${{ success() }}
       name: Discord Notifier
       uses: fateyan/action-discord-notifier@v1.2.0
@@ -91,6 +93,7 @@ jobs: # Job to execute on event
         assignees: ${{github.actor}} # person who did the checking in
         labels: workflow-failed # label
         body: Workflow failed for commit ${{github.sha}} # body or content, github.sha is just a hash number
+        
     - if: ${{ failure() }}    
       name: Discord Notifier
       uses: fateyan/action-discord-notifier@v1.2.0
