@@ -81,7 +81,7 @@ jobs: # Job to execute on event
       name: Discord Notifier
       uses: fateyan/action-discord-notifier@v1.2.0
       with:
-        webhook: https://discord.com/api/webhooks/853518392798347264/LBg3xSNhVYRPow2uEjYK3mmuOy7ZBgnanZB_9OM3yXKRzTiUhUWDLMN9ynFsqtuhifW1
+        webhook: ${{secrets.DISCORD_WEBHOOK}} # can put your own discord webhook link
         message-title: CI Success by ${{github.actor}}
        
     - if: ${{ failure() }}
@@ -98,5 +98,5 @@ jobs: # Job to execute on event
       name: Discord Notifier
       uses: fateyan/action-discord-notifier@v1.2.0
       with:
-        webhook: https://discord.com/api/webhooks/853518392798347264/LBg3xSNhVYRPow2uEjYK3mmuOy7ZBgnanZB_9OM3yXKRzTiUhUWDLMN9ynFsqtuhifW1
+        webhook: ${{secrets.DISCORD_WEBHOOK}}  # can put your own discord webhook link
         message-title: CI Failed by ${{github.actor}}
